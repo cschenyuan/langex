@@ -61,3 +61,20 @@ class VolatileExample1 {
         }
     }
 }
+
+class VolatileExample2 {
+    int a = 0;
+    volatile boolean flag =false;
+
+    public void writer () {
+        a = 1; // common write
+        int ad = a; // common read
+        // JMM will insert StoreStore memory barrier
+        flag = true; // volatile write
+        // JMM will insert StoreLoad memory barrier
+        // ....
+        a = 2;
+        boolean status = flag; // volatile read
+        // JMM will insert LoadLoad,LoadStore memory barrier
+    }
+}
