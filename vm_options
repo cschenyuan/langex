@@ -1,5 +1,6 @@
 #!/bin/bash
-
+#
+#
 export OPTS="$OPTS -verbose:gc"
 
 # Prints GC status (Must have for GC tuning, low overhead)
