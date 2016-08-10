@@ -6,13 +6,34 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by yuan on 16/1/7.
+ *
+ * Wait/Notify Generic
+ *
+ * Waiter:
+ * synchronized(object) {
+ *     if (! condition) {
+ *         object.wait();
+ *     }
+ *     // TO DO
+ * }
+ *
+ * Notifier:
+ * synchronized(object) {
+ *     // TO DO
+ *     setCondition(true);
+ *     object.notifyAll();
+ * }
+ *
+ *
 */
 public class WaitNotify {
     static boolean flag = true;
+    // object should be visible for both Waiter and Notifier
     static Object lock = new Object();
 
     static class Wait implements Runnable {
         public void run() {
+            // acquire lock's LOCK
             synchronized(lock) {
                 while(flag) {
                     try {
