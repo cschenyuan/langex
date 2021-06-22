@@ -1,0 +1,58 @@
+#!/bin/bash
+#
+#
+export OPTS="$OPTS -verbose:gc"
+
+# Prints GC status (Must have for GC tuning, low overhead)
+export OPTS="$OPTS -XX:+PrintGCDetails"
+
+# Prints all JVM runtime flags when JVM starts (no overhead)
+export OPTS="$OPTS -XX:+PrintFlagsFinal"
+
+# Tracks time stamps for each GC activity (low overhead)
+export OPTS="$OPTS -XX:+PrintGCDateStamps"
+export OPTS="$OPTS -XX:+PrintGCTimeStamps"
+
+# Prints information every time when GC decides to change
+#  any setting or hits certain conditions
+export OPTS="$OPTS -XX:+PrintAdaptiveSizePolicy"
+
+# Prints GC reference processing for each GC
+export OPTS="$OPTS -XX:+PrintReferenceGC"
+
+export OPTS="$OPTS -XX:+PrintTenuringDistribution"
+
+######################
+# Garbage Collector ##
+######################
+#export OPTS="$OPTS -XX:+UseSerialGC"   # Use Serial + SerialOld GC
+#export OPTS="$OPTS -XX:+UseParNewGC"   # Use ParNew + SerialOld GC
+#export OPTS="$OPTS -XX:+UseParallelGC" # Use ParallelScavenge + SerialOld GC
+#export OPTS="$OPTS -XX:+UseParallelOldGC"  # Use ParallelScavenge + ParallelOld GC
+#export OPTS="$OPTS -XX:+UseConcMarkSweepGC" # Use CMS + ParNew + SerialOld GC
+export OPTS="$OPTS -XX:+UseG1GC" # Use G1 GC
+
+export OPTS="$OPTS -Xms20M -Xmx20M -Xmn10M"
+export OPTS="$OPTS -XX:SurvivorRatio=8"
+#export OPTS="$OPTS -XX:PretenureSizeThreshold=3145728"
+#export OPTS="$OPTS -XX:MaxTenuringThreshold=1"
+#export OPTS="$OPTS -XX:-PromotionFailureALot"
+
+# Uses multi-threads in parallel to process references
+export OPTS="$OPTS -XX:+ParallelRefProcEnabled"
+
+# Sets number of Parallel GC threads
+# Recommended: 8 + (of_logical_processors - 8)(5/8)
+export OPTS="$OPTS -XX:ParallelGCThreads=4"
+
+# -- G1 Collector's helpful patameters --
+# Sets low desired GC pause target. the default is 200ms
+export OPTS="$OPTS -XX:MaxPauseMills=100"
+
+# Sets the percentage of heap that you are willing to waste.
+# The HotSpot VM do not initiate the mixed garbage collection cycle
+# when the reclaimble percentage is less than the heap waste heap.
+export OPTS="$OPTS -XX:G1HeapWastePercent=20"
+
+export OPTS="$OPTS -XX:InitialingHeapOccupancyPercent=75"
+export OPTS="$OPTS -XX:ConcGCThreads=32"

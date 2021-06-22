@@ -3,8 +3,10 @@ package com.atella.java.lang;
 public class StringTest {
 
   public static void main(String[] args) {
-    test01();
+//    test01();
+    testFormat();
   }
+
 
   static void print(String msg) {
     System.out.println(msg);
@@ -37,4 +39,7 @@ public class StringTest {
     print("s3.intern hash code: " + s3.hashCode());
   }
 
+  static void testFormat() {
+    print(String.format("%s %s","chen","yuan"));
+  }
 }

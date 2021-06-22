@@ -1,0 +1,13 @@
+
+/*
+//grant Principal com.atella.java.security.MyPrincipal "Alan" {
+//    permission java.io.FilePermission "/Users/yuan/Devel/studio/atella/data/foo.txt", "read";
+//};
+//grant {
+//    permission java.io.FilePermission "/Users/yuan/Devel/studio/atella/data/foo.txt", "read";
+//};
+*/
+
+grant codeBase "file:/Users/yuan/Devel/studio/atella/target/classes" {
+    permission java.io.FilePermission "/Users/yuan/Devel/studio/atella/data/foo.txt", "read";
+};

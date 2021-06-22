@@ -21,6 +21,7 @@ public class BoundedQueue<T> {
     public void add(T t) throws InterruptedException {
         lock.lock();
         try {
+            // use while rather than if
             while (count == items.length)
                 notFull.await();
             items[addIndex] = t;
@@ -37,6 +38,7 @@ public class BoundedQueue<T> {
     public T remove() throws InterruptedException {
         lock.lock();
         try {
+            // use while rather than if
             while (count == 0)
                 notEmpty.await();
             Object x = items[removeIndex];

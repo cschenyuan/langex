@@ -1,19 +1,24 @@
 package com.atella.java.test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Executors;
 
 public class Test {
 
 	public static void main(String[] args) {
 //        String[] argv = {"a","b"};
 //        System.out.println(Arrays.toString(argv));
-        test04();
+        test05();
 	}
+	
 
     static void test00() {
         String str = "Hello World";
 		str.compareTo("");
         try {
+
           Thread.sleep(1000 * 600);
         } catch (Exception e) {
           e.printStackTrace();
@@ -68,6 +73,14 @@ public class Test {
             System.out.println(str);
         }
     }
+
+    static void test05() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(1479196223048L);
+        System.out.println(dateFormat.format(date));
+        int [] a = new  int[]{1, 3};
+    }
+
 }
 
 class MyObject {

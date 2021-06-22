@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PROJECT=book.jvm
+#PROJECT=book.jvm.exec
+PROJECT=java.test
 REBUILD=0
 case "$1" in
     --build|-b)
@@ -23,7 +24,9 @@ echo -e "\n-----------------"
 # programma
 #java -cp ./target/classes/ com.atella.java.programma."$1"
 
-. ./vm_options
+# . ./vm_options
+#OPTS="${OPTS} -XX:+TraceClassLoading"
+OPTS="${OPTS} -Xverify:none"
 echo "VM OPTS: $OPTS"
 # test
 java $OPTS -cp ./target/classes/ com.atella.$PROJECT."$1"

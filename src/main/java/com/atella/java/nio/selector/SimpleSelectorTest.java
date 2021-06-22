@@ -1,4 +1,4 @@
-package com.atella.java.nio;
+package com.atella.java.nio.selector;
 
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -48,8 +48,8 @@ public class SimpleSelectorTest {
                 if (key.isConnectable()) { // determines type of key
                     System.out.println("Socket has ready to connect.");
                 }
+                keyIterator.remove();
             }
-            keyIterator.remove();
         }
     }
 
@@ -67,17 +67,20 @@ public class SimpleSelectorTest {
 
         while (true) {
             int readyChannel = selector.select();
-            if (readyChannel == 0) continue;
+            if (readyChannel == 0) {
+                Thread.sleep(1000L);
+                continue;
+            }
 
             Set keys = selector.selectedKeys();
             Iterator keyIterator = keys.iterator();
             while (keyIterator.hasNext()) {
                 SelectionKey key = (SelectionKey) keyIterator.next();
-                if (key.isAcceptable()) {
-                    System.out.println("Socket Accepted");
+                if (key == k && key.isConnectable()) {
+                    System.out.println("Socket Connected");
                 }
+                keyIterator.remove();
             }
-            keyIterator.remove();
         }
     }
 }

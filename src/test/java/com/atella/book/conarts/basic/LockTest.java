@@ -4,6 +4,11 @@ package com.atella.book.conarts.basic;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.LockSupport;
@@ -87,6 +92,39 @@ public class LockTest {
         // get supported in Java 6
         LockSupport.parkNanos(this,TimeUnit.SECONDS.toNanos(5));
     }
+
+
+    @Test
+    public void testNotify() {
+        Object lock = new Object();
+
+        lock.notify();
+    }
+
+    @Test
+    public void testThreadPool() {
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+
+        executor.execute(() -> System.out.println("hello"));
+
+        executor.shutdown();
+
+        executor.execute(() -> System.out.println("hello"));
+    }
+
+    @Test
+    public void testSort() {
+        List<Integer> list = Arrays.asList(1 ,2 , 3, 4);
+        list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2.compareTo(o1);
+            }
+        });
+
+        System.out.println(list.toString());
+    }
+
 }
 
 

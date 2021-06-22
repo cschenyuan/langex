@@ -1,8 +1,10 @@
 package com.atella.book.conarts.basic;
 
 import org.junit.Test;
+import sun.misc.BASE64Encoder;
 
 import java.net.*;
+import java.util.*;
 
 /**
  * Created by yuan on 16/2/18.
@@ -60,5 +62,57 @@ public class ITest {
     @Test
     public void test04() {
         System.out.println("aAAA".toLowerCase());
+    }
+
+    @Test
+    public void test05() {
+        Date date = new Date();
+        System.out.println(String.format("%03d", 1) + date.getTime());
+    }
+
+    @Test
+    public void test06() {
+       Integer i = null;
+       int n = Integer.valueOf(i);
+       System.out.println(n);
+    }
+
+    @Test
+    public void test7() {
+        int n = 0;
+        int addition = 3;
+        switch (addition) {
+            case 1: n++;
+            case 2: n+=2;
+            case 3: n+=3;
+            default: n+=4;
+        }
+
+        System.out.println(n);
+    }
+
+    @Test
+    public void test8() {
+        Float i1 = 1.f;
+        Float i2 = 1.f;
+        System.out.println(i1.hashCode());
+        System.out.println(i2.hashCode());
+        System.out.println(i1 == i2);
+        System.out.println(i1.equals(i2));
+    }
+
+    @Test
+    public void test9() {
+        Set<String> set = new TreeSet<>(new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                return o2.compareTo(o1);
+            }
+        });
+
+        set.add("1_2_1");
+        set.add("2_2_1");
+        set.add("3_2_2_1_1");
+
+        System.out.println(Arrays.toString(set.toArray()));
     }
 }

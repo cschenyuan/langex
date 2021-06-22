@@ -33,7 +33,10 @@ export OPTS="$OPTS -XX:+PrintTenuringDistribution"
 export OPTS="$OPTS -XX:+UseG1GC" # Use G1 GC
 
 export OPTS="$OPTS -Xms20M -Xmx20M -Xmn10M"
+# (eden space) / (two survivors space)
 export OPTS="$OPTS -XX:SurvivorRatio=8"
+# (old generation) / (new generation)
+export OPTS="$OPTS -XX:NewRatio=4"
 #export OPTS="$OPTS -XX:PretenureSizeThreshold=3145728"
 #export OPTS="$OPTS -XX:MaxTenuringThreshold=1"
 #export OPTS="$OPTS -XX:-PromotionFailureALot"
@@ -49,6 +52,10 @@ export OPTS="$OPTS -XX:ParallelGCThreads=4"
 # Sets low desired GC pause target. the default is 200ms
 export OPTS="$OPTS -XX:MaxPauseMills=100"
 
+# Sets the percentage of heap that you are willing to waste.
+# The HotSpot VM do not initiate the mixed garbage collection cycle
+# when the reclaimble percentage is less than the heap waste heap.
 export OPTS="$OPTS -XX:G1HeapWastePercent=20"
+
 export OPTS="$OPTS -XX:InitialingHeapOccupancyPercent=75"
 export OPTS="$OPTS -XX:ConcGCThreads=32"

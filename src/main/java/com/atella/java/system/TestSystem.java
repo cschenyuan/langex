@@ -1,8 +1,8 @@
 package com.atella.java.system;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import org.junit.Test;
+
+import java.util.*;
 
 public class TestSystem {
 
@@ -17,7 +17,17 @@ public class TestSystem {
         return sb.toString();
       }
 
-      
+    @Test
+    public void test() {
+        Properties properties = System.getProperties();
+        Enumeration enumeration = properties.propertyNames();
+        while (enumeration.hasMoreElements()) {
+            String key = (String)enumeration.nextElement();
+            System.out.println("key: " + key + " value:" + properties.get(key));
+        }
+    }
+
+
 	public static void main(String[] args) {
         List<String> list = new ArrayList<String>();
         list.add("A");
