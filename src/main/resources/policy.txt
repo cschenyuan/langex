@@ -1,6 +1,6 @@
 
 /*
-//grant Principal com.atella.java.security.MyPrincipal "Alan" {
+//grant Principal MyPrincipal "Alan" {
 //    permission java.io.FilePermission "/Users/yuan/Devel/studio/atella/data/foo.txt", "read";
 //};
 //grant {

@@ -32,6 +32,9 @@ export OPTS="$OPTS -XX:+PrintTenuringDistribution"
 #export OPTS="$OPTS -XX:+UseConcMarkSweepGC" # Use CMS + ParNew + SerialOld GC
 export OPTS="$OPTS -XX:+UseG1GC" # Use G1 GC
 
+# -Xmx20M: 堆内存的最大容量
+# -Xms20M: 堆内存的初始大小
+# -Xmn10M: 新生代堆内存大小
 export OPTS="$OPTS -Xms20M -Xmx20M -Xmn10M"
 # (eden space) / (two survivors space)
 export OPTS="$OPTS -XX:SurvivorRatio=8"

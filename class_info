@@ -2,7 +2,7 @@ Classfile /Users/yuan/Devel/studio/atella/target/classes/com/atella/java/lang/Cl
   Last modified 2020/3/22; size 1038 bytes
   MD5 checksum b22cef5d997637864afe57ff7f49faa4
   Compiled from "ClassTest.java"
-public class com.atella.java.lang.ClassTest implements java.io.Serializable
+public class ClassTest implements java.io.Serializable
   minor version: 0
   major version: 52
   flags: ACC_PUBLIC, ACC_SUPER
@@ -69,7 +69,7 @@ Constant pool:
   #61 = Utf8               java/io/PrintStream
   #62 = Utf8               println
 {
-  public com.atella.java.lang.ClassTest(double);
+  public ClassTest(double);
     descriptor: (D)V
     flags: ACC_PUBLIC
     Code:

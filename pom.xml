@@ -119,6 +119,15 @@
         </plugin>
 
     </plugins>
+
+      <resources>
+          <resource>
+              <directory>${project.basedir}/src/main/java</directory>
+              <includes>
+                  <include>**/*.d</include>
+              </includes>
+          </resource>
+      </resources>
   </build>
 
   <repositories>
