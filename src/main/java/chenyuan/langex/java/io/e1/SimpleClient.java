@@ -18,6 +18,7 @@ public class SimpleClient {
              PrintWriter out = new PrintWriter(socket.getOutputStream());
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
         ) {
+            socket.getChannel();
             out.println("QUERY TIME ORDER");
             out.flush();
             System.out.println("发送成功");
