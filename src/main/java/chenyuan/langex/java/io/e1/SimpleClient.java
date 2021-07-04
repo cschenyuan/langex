@@ -13,13 +13,12 @@ public class SimpleClient {
 
     public static void main(String[] args) {
         String serverIP = "127.0.0.1";
-        int port = 8080;
+        int port = 8888;
         try (Socket socket = new Socket(serverIP, port);
              PrintWriter out = new PrintWriter(socket.getOutputStream());
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
         ) {
-            socket.getChannel();
-            out.println("QUERY TIME ORDER");
+            out.println("QUERY TIME ORDER\n");
             out.flush();
             System.out.println("发送成功");
             String res = in.readLine();

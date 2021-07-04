@@ -8,7 +8,7 @@ import java.nio.CharBuffer;
 import java.nio.IntBuffer;
 import java.util.Random;
 
-import static chenyuan.langex.java.nio.buffer.Util.*;
+import static chenyuan.langex.java.nio.Util.*;
 
 
 /**

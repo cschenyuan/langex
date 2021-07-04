@@ -31,7 +31,7 @@ public class SimpleHandler implements Runnable {
                     break;
                 }
                 System.out.println("接收到： " + body);
-                currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new Date().toString() : "BAD ORDER";
+                currentTime = "QUERY TIME ORDER".trim().equalsIgnoreCase(body) ? new Date().toString() : "BAD ORDER";
                 out.println(currentTime);
                 out.flush();
             }

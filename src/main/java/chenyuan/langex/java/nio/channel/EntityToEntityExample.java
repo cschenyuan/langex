@@ -5,10 +5,7 @@ import chenyuan.langex.java.io.e4.ObjectStreamTest;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.DatagramChannel;
-import java.nio.channels.FileChannel;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 
 /**
  * @author chenyuan
@@ -57,12 +54,10 @@ public class EntityToEntityExample {
             srcFileChannel.position(0);
 
             // TO JavaObject
-            byte[] fileBytes = new byte[(int)srcFile.length()]; // 用户缓冲区
-            ByteBuffer buffer = ByteBuffer.wrap(fileBytes); // 将用户缓冲区作为channel的缓冲区
-            srcFileChannel.read(buffer); // 通过channel读取文件数据到缓冲区
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(fileBytes));
+            // 创建一个输入流(sun.nio.ch.ChannelInputStream)，从通道中读取数据
+            InputStream ins = Channels.newInputStream(srcFileChannel);
+            ObjectInputStream ois = new ObjectInputStream(ins);
             Object object = ois.readObject(); // 反序列化
-            buffer.clear();
             ois.close();
             System.out.println(object.getClass().getSimpleName() + ": " + object);
 

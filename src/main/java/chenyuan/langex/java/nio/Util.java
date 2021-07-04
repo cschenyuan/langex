@@ -1,4 +1,4 @@
-package chenyuan.langex.java.nio.buffer;
+package chenyuan.langex.java.nio;
 
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -18,6 +18,7 @@ public class Util {
     public static void printBuffer(Buffer buffer, boolean printData) {
         System.out.println("[" + buffer.getClass().getSimpleName()
                 + "] position = " + buffer.position()
+                + ", remaining = " + buffer.remaining()
                 + ", limit = " + buffer.limit()
                 + ", capacity = " + buffer.capacity());
         if (!printData) {

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.nio.*;
 
-import static chenyuan.langex.java.nio.buffer.Util.*;
+import static chenyuan.langex.java.nio.Util.*;
 
 /**
  * @author chenyuan
