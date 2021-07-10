@@ -1,7 +1,6 @@
 package chenyuan.langex.book.conarts.basic;
 
 import org.junit.Test;
-import sun.misc.BASE64Encoder;
 
 import java.net.*;
 import java.util.*;
